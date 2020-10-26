@@ -2,17 +2,19 @@ import React,{useState} from 'react';
 import './App.css';
 // import ButtonComponent from './stopwatch/btncomponent';
 // import Displaycomponent from './stopwatch/dispcomponent';
-import Lifecycle from './src1/lifecycle'
+// import Lifecycle from './src1/lifecycle'
 import List from './src1/todolist'
 
 function App() {
   const [time,setTime]=useState({ms:0,s:0,m:0,h:0});
+  const [interv,setinterv]=useState();
+  
   const start=()=>{
     run();
-    setInterval(run,10)
+    setinterv(setInterval(run,10));
   };
   const stop=()=>{
-    clearInterval(run)
+    clearInterval(interv)
   }
   var updatedMs = time.ms, updatedS = time.s, updatedM = time.m, updatedH = time.h;
   const run = () => {
@@ -34,9 +36,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
         {/* <Displaycomponent time={time} />
-        <ButtonComponent start={start} stope={stop} /> */}
+        <ButtonComponent start={start} stop={stop} /> */}
         <List />
       </header>
     </div>
